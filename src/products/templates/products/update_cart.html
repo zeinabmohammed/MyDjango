@@ -1,0 +1,28 @@
+
+
+{% if product in cart.products.all %}
+	<form action="{% url 'carts:remove' %}" 
+				    method="post" style="display: inline;" onsubmit="window.mytest()">
+				    {% csrf_token %}
+				    <input type="hidden" name="product_id" 
+				        value="{{ product.id }}" />Already in Cart
+				    <button type="submit" class="btn btn-warning btn-sm">
+				        <span class="fas fa-trash-alt"></span>&nbsp;remove?
+				    </button>
+			</form> 
+  {% else %}
+			<form action="{% url 'carts:update' %}" 
+				    method="post" style="display: inline;" onsubmit="window.mytest()">
+				    {% csrf_token %}
+				    <input type="hidden" name="product_id" 
+				        value="{{ product.id }}" />
+				    <button type="submit" class="btn btn-success btn-sm">
+				        <span class="fas fa-cart-plus"></span>&nbsp;add to cart
+				    </button>
+			</form> 
+{% endif %}
+
+        <!-- <input type="hidden" name='product_id' value='{{ product.id }}'> -->
+
+ 
+

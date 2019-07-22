@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+
+{% block content%}
+<h1><i class="fas fa-shopping-cart">Cart</i></h1>
+{% if cart.products.exists %}
+	
+			<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Product Name</th>
+		      <th scope="col">Product Price</th>
+		   
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for product in cart.products.all %}
+
+		    <tr>
+		      <th scope="row">{{forloop.counter}}</th>
+		      <td><a href="{{product.get_absolute_url}}">{{product.title}}</a> {% include "products/update_cart.html" %}</td>
+		      <td>{{product.price}}</td>
+		     
+		    </tr>
+		    {% endfor %}
+		    <tr>
+		      <th colspan="2"></th>
+		     
+		      <th><b>Total:</b>{{cart.total}}</th>
+		    </tr>
+		      <tr>
+		      <th colspan="2"></th>
+		     
+		      <th><a class="btn btn-block btn-success" href="{% url 'carts:checkout' %}" ><b>checkout</b></a></th>
+		    </tr>
+		 
+		  </tbody>
+		</table>
+{% else %}
+	<div class="lead"> Cart is empty</div>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1>Login</h1>
+	<form method="POST" action="{% url 'login'%}">
+		{% csrf_token %}
+		{{ form }}
+		 <input type="submit" value="login">
+   		  <input type="hidden" value="{% if request.REQUEST.next %}{{ request.REQUEST.next }}{% else %}{% if request.META.HTTP_REFERER %}{{ request.META.HTTP_REFERER }}{% else %}/{% endif %}{% endif %}" name="next" />
+
+{% endblock%}

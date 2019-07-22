@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	{% if object.image %}<div class="img-responsive float-right ">
+		<img src='{{ object.image.url}}' style=" max-height: 70%;
+        max-width:70%;" />
+
+		</div>{% endif %}
+	<div class="col-12 col-md-6">
+		{% include "products/update_cart.html"%}
+	
+</div>
+	<div class="row">
+		<div class="col-12 col-md-6">
+			<h1>{{object.title}}</h1>
+			{{object.timestamp|timesince}} ago
+			
+			{{ object.description|linebreaks}}
+			<strong>Price : {{object.price}} &#163;</strong>
+	<br>
+</div>
+</div>
+</div>
+<script type="text/javascript">$(function(){
+  $("#pro").imagezoomsl();
+});</script>
+{% endblock %}
