@@ -46,8 +46,17 @@ INSTALLED_APPS = [
     'tags',
     'carts',
     'orders',
-    "addresses"
+    "addresses",
+    'payments',
+    'paypal.standard.ipn',
 ]
+PAYPAL_RECEIVER_EMAIL='devzeinab@gmail.com'
+PAYPAL_TEST=True
+PAYMENT_HOST = 'localhost:8000'
+PAYMENT_USES_SSL = False
+PAYMENT_MODEL = 'carts.Payment'
+PAYMENT_VARIANTS = {
+                    'default': ('payments.dummy.DummyProvider', {})}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

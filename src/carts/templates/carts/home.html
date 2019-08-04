@@ -20,7 +20,7 @@
 
 		    <tr>
 		      <th scope="row">{{forloop.counter}}</th>
-		      <td><a href="{{product.get_absolute_url}}">{{product.title}}</a> {% include "products/update_cart.html" %}</td>
+		      <td><img src= "{{product.image.url}}"/ alt="" border=1 height=100 width=100></img><a href="{{product.get_absolute_url}}">{{product.title}}</a> {% include "products/update_cart.html" %}</td>
 		      <td>{{product.price}}</td>
 		     
 		    </tr>
@@ -31,13 +31,14 @@
 		      <th><b>Total:</b>{{cart.total}}</th>
 		    </tr>
 		      <tr>
-		      <th colspan="2"></th>
+		      <th colspan="2"><th><a class="btn btn-block btn-success" href="{% url 'carts:pay' %}" ><b>pay online</b></a></th>
 		     
 		      <th><a class="btn btn-block btn-success" href="{% url 'carts:checkout' %}" ><b>checkout</b></a></th>
 		    </tr>
 		 
 		  </tbody>
 		</table>
+		
 {% else %}
 	<div class="lead"> Cart is empty</div>
 {% endif %}

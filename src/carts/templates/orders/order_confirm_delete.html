@@ -1,0 +1,26 @@
+ {% extends "base.html" %}
+ {% block content %}
+  <div class="content-section">
+  	{% if object.status == 'Shipped' %}
+			<h2>This Order Already Shipped You Can't Delete it</h2>
+			<p>If you have any Troubles please call Us on Hotline 19 9 19</p>
+	{% else %}
+	<form method="POST">
+		   	{% csrf_token %}
+		<fieldset class="form-group">
+			<legend class="border-bottom mb-4">Delete Order</legend>
+			
+			<h2>Are You sure You want To delete this Order ?</h2>
+		</fieldset>
+		<div class="form-group">
+			<button class="btn btn-outline-danger" type="submit">
+	         		Yes, Delete			
+	        </button>
+			<a href="{% url 'carts:OrderDetail' object.id %}"class="btn btn-outline-secondary" >
+	         		Cancel			
+			</a>
+		</div>
+	</form>
+  </div>
+  {% endif %}
+  {% endblock %}

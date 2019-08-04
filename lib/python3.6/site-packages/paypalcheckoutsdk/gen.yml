@@ -1,0 +1,6 @@
+---
+projectName: checkoutsdk
+language: python
+sourcePath: checkoutsdk
+testPath: tests
+apiVersioning: false

@@ -5,6 +5,7 @@
 {% url "logout" as logout_url %}
 {% url "register" as register_url %}
 {% url "carts:home" as cart_url %}
+{% url "carts:checkout_done" as checkout_url %}
 <!-- <h1>{{ brand_name }} </h1> -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 ">
@@ -41,6 +42,9 @@ Black Fashion
       {% if request.user.is_authenticated %}
       <li class="nav-item {% if request.path == logout_url %} active {%endif%}">
         <a class="nav-link " href="{{ logout_url }}?next={{request.GET.next}}" tabindex="-1" >Logout</a>
+      </li>
+       <li class="nav-item {% if request.path == checkout_url %} active {%endif%}">
+        <a class="nav-link " href="{{ checkout_url }}?next={{request.GET.next}}" tabindex="-1" >My Orders</a>
       </li>
       {% else %}
        <li class="nav-item {% if request.path == login_url %} active {%endif%}">

@@ -1,11 +1,26 @@
 {% extends "base.html" %}
-
-
 {% block content %}
-<div class='col-6 mx-auto py-5 text-center'>
-  <h1 class='display-1'>Thank you for your order!!!</h1>
-  <P> we will call You soon to confirm 
-Delivery time </P>
-</div>
+	<h1 class='mx-auto'>Your Orders:</h1>
 
+
+	{% for object in orders %}
+	
+	 <div class="card-columns">
+	
+	 <div class="card" style="width: 18rem;"> <div class="card-header">
+    {{ object.status }}
+  </div>
+	  <div class="card-body">
+	    <h5 class="card-title">Cart Items: {% for product in object.cart.products.all %}{{ product }}{% if not forloop.last %}, {% endif %}{% endfor %}</h5>
+	    <h6 class="card-subtitle mb-2 text-muted">Shipping Address: {{ object.shipping_address.get_address }}</h6>
+	    <p class="card-text">Cart Total: {{ object.cart.total }}</p>
+	    <p class="card-text">Shipping Total: {{ object.shipping_total }}</p>
+	    <p class="card-text">Order Total: {{ object.total }}</p>
+	    <!-- <p class="card-text">Order Status: {{ object.status }}</p> -->
+	    <a class='btn btn-success'href="{% url 'carts:OrderDetail' object.id %}" class="card-link">View</a>
+	    <a class='btn btn-danger' href="{% url 'carts:OrderDelete' object.id %}" class="card-link">Delete</a>
+	  </div>
+	 </div>
+    {% endfor %}
+	</div>
 {% endblock %}
