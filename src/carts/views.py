@@ -13,8 +13,8 @@ from django.views.generic import ListView,DetailView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
-from payments import get_payment_model, RedirectNeeded
-from paypal.standard.forms import PayPalPaymentsForm
+# from payments import get_payment_model, RedirectNeeded
+# from paypal.standard.forms import PayPalPaymentsForm
 from django.views.decorators.csrf import csrf_exempt
 
 

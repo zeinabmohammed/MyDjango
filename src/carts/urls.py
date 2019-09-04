@@ -20,7 +20,7 @@ urlpatterns = [
 	path('checkout/done', checkout_done_view, name="checkout_done"),
 	path('order/<pk>', OrderDetail.as_view(), name="OrderDetail"),
 	path('order/<int:pk>/delete', OrderDelete.as_view(), name="OrderDelete"),
-	path('paypal/', include('paypal.standard.ipn.urls')),
+	# path('paypal/', include('paypal.standard.ipn.urls')),
 	path('pay/',pay,name='pay'),
 	# path('guest_register', guest_register_view, name="guest_register"),
 	# path('delete/<id>', removeproduct, name="remove"),

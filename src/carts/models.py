@@ -4,8 +4,8 @@ from django.conf import settings
 from products.models import Product
 from django.db.models.signals import pre_save, post_save, m2m_changed
 from decimal import Decimal
-from payments import PurchasedItem
-from payments.models import BasePayment
+# from payments import PurchasedItem
+# from payments.models import BasePayment
 
 User = settings.AUTH_USER_MODEL
 # class CartManager(models.Manager):
@@ -45,6 +45,7 @@ class Cart(models.Model):
 
 	def __str__(self):
 		return str(self.id)
+
 def m2m_changed_cart_receiver(sender, instance,action, *args, **kwargs):
 	products = instance.products.all()
 	total=0
@@ -65,9 +66,9 @@ pre_save.connect(pre_save_cart_receiver, sender=Cart)
 
 # class Payment(BasePayment):
 # 	def get_failure_url(self):
-# 	return 'payments/failure/'
+# 		return 'payments/failure/'
 # 	def get_success_url(self):
-# 	return 'payments/success/'
+# 		return 'payments/success/'
 # 	def get_purchased_items(self):
 # 	# you'll probably want to retrieve these from an associated order
 # 		yield PurchasedItem(name='The Hound of the Baskervilles', sku='BSKV',
