@@ -24,7 +24,7 @@ urlpatterns = [
 	path('cart/', include("carts.urls")),
 	# path('cart/', cart_home, name="cart"),
 	path('admin/', admin.site.urls),
-
+	path('ratings/', include('star_ratings.urls', namespace='ratings')),
     ]
 if settings.DEBUG:
 	urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% load ratings %}
+
+
 
 {% block content %}
 <div class="container">
@@ -18,6 +21,7 @@
 			
 			{{ object.description|linebreaks}}
 			<strong>Price : {{object.price}} &#163;</strong>
+			<div>{% ratings object %}</div>
 	<br>
 </div>
 </div>

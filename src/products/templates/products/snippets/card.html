@@ -1,3 +1,4 @@
+
 <div class="card" style="width: 18rem;">
 	{% if product.image %}
 	<a href="{{ product.get_absolute_url}}">
@@ -7,6 +8,7 @@
   <div class="card-body">
     <h5 class="card-title">{{ product.title }}</h5>
     <p class="card-text">{{ product.description|truncatewords:12 }}.</p>
+    <div>{{product.price}}&#163;</div>
     <a href="{{ product.get_absolute_url}}" class="btn btn-primary">View</a> <!-- same as next -->
     <div class="btn btn-success btn-sm">
     {% include "products/update_cart.html"  %}

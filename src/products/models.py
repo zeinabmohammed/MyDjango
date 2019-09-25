@@ -17,6 +17,8 @@ class ProductQueryset(models.query.QuerySet):
 			return None	
 	def featured(self):
 		return self.filter(featured=True)
+	def men(self):
+		return self.filter(gender='men')
 	# def all(self):
 	# 	return self.filter(active=True)
 # class  ProductManager(models.Manager):
@@ -42,7 +44,7 @@ class Product(models.Model):
 	image         = models.ImageField(upload_to='products', null=True, blank=False)
 	featured      = models.BooleanField(default=False)
 	active        = models.BooleanField(default=True)
-	gender 		  = models.CharField(max_length=120,default="women" ,choices=GENDER_CHOISES)
+	gender 		  = models.CharField(max_length=120,default="" ,choices=GENDER_CHOISES)
 	timestamp     = models.DateTimeField(auto_now_add=True)
 	
 	objects = ProductQueryset.as_manager()

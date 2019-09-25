@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 # Create your views here.
 from .models import Product
+from django.core.paginator import Paginator
+
 from django.http import Http404 
 from carts.models import Cart
 class ProductFeaturedListView(ListView):
@@ -11,18 +13,21 @@ class ProductFeaturedListView(ListView):
 		request = self.request
 		return Product.objects.featured()
 
-class ProductFeaturedDetailView(DetailView):
-	template_name = "products/featured-detail.html"
-	queryset = Product.objects.featured()
+class ProductMenView(ListView):
+	queryset = Product.objects.filter(gender='men')
+	template_name = "products/snippets/men.html"
+class ProductWomenView(ListView):
+	queryset = Product.objects.filter(gender='women')
+	template_name = "products/snippets/women.html"	
+	 # Show 25 contacts per page
+
 	# def get_queryset(self, *args, **kwargs):
 	# 	request = self.request
 	# 	return Product.objects.featured()
 class ProductListView(ListView):
-	queryset = Product.objects.all()#make aqueryset
+	queryset = Product.objects.all()
 	template_name = "products/list.html"
-	def get_queryset(self, *args, **kwargs):
-		request = self.request
-		return Product.objects.all()
+	paginate_by=6
 	# # def get_context_data(self, *args, **kwargs):
 	# 	context = super(ProductListView,self).get_context_data(*args, **kwargs)
 	# 	print (context)

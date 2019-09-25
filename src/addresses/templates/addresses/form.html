@@ -1,11 +1,13 @@
+
+{% load crispy_forms_tags %}
 <form method="POST" action="{% url 'ckeckout_address_create'%}">
 		{% csrf_token %}
 		{% if next_url %}
 			 <input type="hidden" value="{{ next_url }}" name="next" />
 
 		{% endif %}
-		{{ form.as_p }}
-		  <button   value="login" type='Submit' class="btn btn-default">Submit</button>
+		{{ form|crispy}}<br>
+		  <button   value="login" type='Submit' class="btn btn-info">Submit</button>
 		  
 		 
 

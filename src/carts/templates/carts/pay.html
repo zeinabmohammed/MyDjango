@@ -2,14 +2,14 @@
 {% block content%}
 <!DOCTYPE html>
 
-<head>{% block title %}Make Payment{% endblock %}
+<head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 </head>
 
 <body>
 
- 
+ <strong class="text-danger">This is Not Commerical site Don't Pay anyThing ,This is Educational site we are not responsible for any money Transactions</strong>
 
   <script
     src="https://www.paypal.com/sdk/js?client-id=AcPOcNCbqa2vzYmWe84VFwONMRHvrx7HKfKsWPQZLsdk8JfGW6CTz58cXEjS9xDAILeS-eE1oaoVTAph">
@@ -43,6 +43,7 @@
     }
   }).render('#paypal-button-container');
 </script>
+
 
 </body>
 {% endblock %}

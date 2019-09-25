@@ -13,28 +13,28 @@ ORDER_STATUS_CHOISES=(
 		('Paid', "Paid"),
 		('Delivered', "Delivered"),)
 
-# class OrderManager(models.Manager):
-	# def new_or_get(self, user, cart_obj):
-	# 	created = False
-	# 	qs = self.get_queryset().filter(
-	# 			user=user, 
-	# 			cart=cart_obj, 
-	# 			active=True, 
-	# 			status='created'
-	# 			)
-	# 	if qs.count() == 1:
-	# 		obj = qs.first()
+class OrderManager(models.Manager):
+	def new_or_get(self, user, cart_obj):
+		created = False
+		qs = self.get_queryset().filter(
+				user=user, 
+				cart=cart_obj, 
+				active=True, 
+				status='created'
+				)
+		if qs.count() == 1:
+			obj = qs.first()
 			
 			
-	# 	else:
-	# 		obj = self.model.objects.create(
-	# 		user=user, 
-	# 		cart=cart_obj)
-	# 		created = True
-		# if ((obj.status == 'Shipped') or (obj.status == 'Delivered')):
-		# del request.SESSION['cart_id']
+		else:
+			obj = self.model.objects.create(
+			user=user, 
+			cart=cart_obj)
+			created = True
+		if ((obj.status == 'Shipped') or (obj.status == 'Delivered')):
+			del request.SESSION['cart_id']
 			
-		# return obj, created
+		return obj, created
 class Order(models.Model):
 	user 	         = models.ForeignKey(User,null=True, blank=True, on_delete=models.CASCADE)
 	shipping_address = models.ForeignKey(Address, on_delete='CASCADE',related_name="shipping_address",null=True, blank=True)
@@ -45,7 +45,7 @@ class Order(models.Model):
 	total 			 = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
 	active           = models.BooleanField(default=True)
 	date_posted      = models.DateTimeField(default=timezone.now)
-	# objects = OrderManager()
+	objects = OrderManager()
 
 	def __str__(self):
 		return self.order_id

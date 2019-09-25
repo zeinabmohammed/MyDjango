@@ -2,7 +2,7 @@
 {% block content %}
 	<h1 class='mx-auto'>Your Orders:</h1>
 
-
+<b>Please Note once Order Has been Shipped You couldn't Edit or delete it</b>
 	{% for object in orders %}
 	
 	 <div class="card-columns">
@@ -23,4 +23,6 @@
 	 </div>
     {% endfor %}
 	</div>
+	{%if not orders%}
+	<div class="container"><h1 class="mx-auto">You haven't Any Orders</h1></div>{%endif%}
 {% endblock %}

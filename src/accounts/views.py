@@ -7,33 +7,11 @@ from django.contrib.auth.models import User
 from .forms import  LoginForm, RegisterForm#, GuestForm
 from django.utils.http import is_safe_url
 from django.contrib import messages 
-# from .models import GuestEmail
-# def guest_register_view(request):
-# 	form = GuestForm(request.POST or None)
-# 	context = {
-# 			"form": form,
-# 			}
-# 	next_get_url= request.GET.get('next')
-# 	next_post_url= request.POST.get('next')
-# 	redirect_path = next_get_url or next_post_url or None
-# 	if form.is_valid():
-# 		cv=request.get_host()
-# 		print(cv)
-# 		# print(form.cleaned_data)
-# 		email = form.cleaned_data.get("email")
-# 		new_guest_email = GuestEmail.objects.create(email=email)
-# 		request.session['guest_id']=new_guest_email.id
-# 		if  is_safe_url(redirect_path, request.get_host()):
-# 			return(redirect(redirect_path))
-# 		else:
-# 			return (redirect('/register/'))
-# 	else:
-# 		messages.error(request, 'Error wrong username/password')
-	
-# 	return render(request, "/register/",context)
+from django.contrib import messages 
+
 
 def login_page(request):
-	form = LoginForm(request.POST or None)
+	form = LoginForm(data=request.POST)
 	context = {
 			"form": form,
 			}
@@ -48,14 +26,20 @@ def login_page(request):
 		print(user)
 		if user is not None:
 			login(request, user)
+			messages.add_message(request, messages.INFO, "You are now logged-In, welcome")
 			user_url = is_safe_url(redirect_path, request.get_host())
 			print (user_url)
 			if  is_safe_url(redirect_path, request.get_host()):
 				return(redirect(redirect_path))
 		else:
-			return (redirect('/'))
-	else:
-		messages.error(request, 'Error wrong username/password')
+			messages.error(request,'username or password not correct')
+			return redirect('login')
+
+			args = {'form': form}
+			# messages.error(request, "Error")
+			# return (redirect('/'))
+	# else:
+	# 	form=LoginForm()
 	
 	return render(request, "accounts/login.html",context)
 

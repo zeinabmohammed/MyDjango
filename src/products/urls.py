@@ -1,14 +1,18 @@
 
-from django.urls import path
+from django.urls import path,include
 
 from products.views import (
 				ProductListView,
-				ProductDetailslugView
+				ProductDetailslugView,
+				ProductMenView,
+				ProductWomenView
 				)
 app_name= "products"
 urlpatterns = [
 	path('', ProductListView.as_view(), name="list"),
 	path('<slug>', ProductDetailslugView.as_view(), name="detail"),
+	path('men/',ProductMenView.as_view(),name='men'),
+	path('women/',ProductWomenView.as_view(),name='women')
 	#url(r'^products/(?P<pk>\d+)/$', ProductDetailView.as_view()),
 	
 

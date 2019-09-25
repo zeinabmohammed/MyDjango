@@ -10,7 +10,7 @@
   <li class="list-group-item">Order Status {{object.status}}</li>
   <li class="list-group-item">Order Total: {{ object.total }}</li>
 </ul>
-{% if object.status == 'Created' %}<br>
+{% if object.status == 'created' %}<br>
 <a class='btn btn-success' href="{% url 'carts:OrderDelete' object.id %}" class="card-link">Delete</a>
 <a class='btn btn-info' href="{% url 'carts:home' %}" class="card-link">Edit</a>{%endif%}</div>
 {% endblock %}

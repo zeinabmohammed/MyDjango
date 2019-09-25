@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<title> home Template</title>
+<title> Black Fashion Home</title>
 {% block base_head %}
   <link rel='stylesheet' href= '{% static "css/main.css" %}'>
 {% endblock %}
 <div class="text-center">
-    {{ title }}
-    <h1>Your Favourite  Style In one place</h1>
+    <!-- {{ title }} -->
+    <h1>Your Unique Style In One Place</h1>
   </div>
   
     <div class='row'>
-     <div class='col'>
-       <img src="{% static 'img/shop.jpg' %}" class="img-fluid" />
+     <div class='col'><a href="{% url 'products:list'%}" >
+       <img src="{% static 'img/20190909-home-main_01b.webp' %}" class="img-fluid mx-auto" /></a>
        <p>
       {{ content}}
        </p>
@@ -22,9 +22,9 @@
     {% if request.user.is_authenticated %}
       <div class="row">
       <div class="col">
-        <h1>premium</h1>
-            <p>{{ premium_content}} </p>
-      </div>
+        <h1></h1>
+<!--             <p>{{ premium_content}} </p>
+ -->      </div>
     {% endif %}
   </div>
 

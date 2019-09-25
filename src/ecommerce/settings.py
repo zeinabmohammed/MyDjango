@@ -26,7 +26,7 @@ SECRET_KEY = '97po1qjt1q7g@64k7(e8$*yvdpu%t*u@#-^tlg!%s98*g!5elj'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+STAR_RATINGS_ANONYMOUS = True
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    'crispy_forms',
     #my apps
     'accounts',
     'billing',
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     "addresses",
     'payments',
     'paypal.standard.ipn',
+    'star_ratings'
 ]
 PAYPAL_RECEIVER_EMAIL='devzeinab@gmail.com'
 PAYPAL_TEST=True
