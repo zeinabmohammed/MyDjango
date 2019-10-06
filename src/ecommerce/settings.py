@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'phonenumber_field',
+#     'phonenumber_field',
     'crispy_forms',
     #my apps
     'accounts',
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'orders',
     "addresses",
     'payments',
-    'paypal.standard.ipn',
+#     'paypal.standard.ipn',
     'star_ratings'
 ]
 PAYPAL_RECEIVER_EMAIL='devzeinab@gmail.com'
